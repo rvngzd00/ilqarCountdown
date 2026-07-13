@@ -42,11 +42,6 @@ function App() {
     100,
   )
   const leftPercent = Math.max(100 - progress, 0)
-  const targetLabel = MISSION_TARGET.toLocaleDateString('az-AZ', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-  })
 
   return (
     <main className="app-shell">
@@ -63,12 +58,7 @@ function App() {
           </div>
 
           <div className="title-block">
-            <p className="call-sign">İlqar və Zeynəb üçün 1 illik sayğac</p>
-            <h1 id="page-title">Gələn ilə qədər geri sayım</h1>
-            <p className="hero-copy">
-              Bugündən başlayan taktiki geri sayım: hər saniyə hədəf tarixinə
-              daha yaxın.
-            </p>
+            <h1 id="page-title">İlqarın geri dönməsinə qalan vaxt</h1>
           </div>
 
           <div className="countdown-grid" aria-label="Qalan vaxt">
@@ -85,7 +75,7 @@ function App() {
           <div className="mission-progress" aria-label="Missiya proqresi">
             <div className="progress-head">
               <span>Başlanğıc: 13.07.2026</span>
-              <span>Hədəf: {targetLabel}</span>
+              <span>Qayıdış tarixi: 13.07.2027</span>
             </div>
             <div
               className="progress-track"
@@ -94,7 +84,16 @@ function App() {
               aria-valuemax="100"
               aria-valuenow={Math.round(progress)}
             >
-              <span style={{ width: `${progress}%` }}></span>
+              <span
+                className="progress-fill"
+                style={{ width: `${progress}%` }}
+              ></span>
+              <span className="leave-pin" aria-hidden="true"></span>
+            </div>
+            <div className="leave-indicator" aria-label="Məzuniyyət göstəricisi">
+              {/* <span>6 ay tamam</span> */}
+              <strong>Məzuniyyət</strong>
+              <span>13.01.2027</span>
             </div>
             <div className="progress-foot">
               <span>{progress.toFixed(2)}% tamamlandı</span>
